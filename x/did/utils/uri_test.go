@@ -1,0 +1,25 @@
+package utils_test
+
+import (
+	. "github.com/pointidentity/pointidentity-node/x/did/utils"
+	. "github.com/onsi/ginkgo/v2"
+	. "github.com/onsi/gomega"
+)
+
+var _ = Describe("URI validation", func() {
+	DescribeTable("ValidateURI",
+
+		func(isValid bool, uri string) {
+			err := ValidateURI(uri)
+			if isValid {
+				Expect(err).To(BeNil())
+			} else {
+				Expect(err).ToNot(BeNil())
+			}
+		},
+
+		Entry("Valid: General http URI path", true, "http://a.com/a/b/c/d/?query=123#fragment=another_part"),
+		Entry("Valid: General https URI path", true, "https://a.com/a/b/c/d/?query=123#fragment=another_part"),
+		Entry("Valid: only alphabet symbols", true, "SomeAnotherPath"),
+	)
+})

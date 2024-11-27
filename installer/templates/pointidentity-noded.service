@@ -1,0 +1,22 @@
+[Unit]
+Description=Service for running pointidentity-noded daemon
+After=network.target
+Documentation=https://docs.pointidentity.com/node
+
+[Service]
+Type=simple
+User=pointidentity
+ExecStart=/usr/bin/pointidentity-noded start
+Restart=on-failure
+RestartSec=30
+StartLimitBurst=5
+StartLimitInterval=60
+TimeoutSec=120
+StandardOutput=syslog
+StandardError=syslog
+SyslogFacility=syslog
+SyslogIdentifier=pointidentity-noded
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

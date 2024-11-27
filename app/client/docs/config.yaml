@@ -1,0 +1,39 @@
+# Swagger config 
+
+swagger: '2.0'
+info:
+  title: Point Identity Network - REST and gRPC Gateway Documentation
+  description: Documentation describing REST and gRPC Gateway endpoints for pointidentity network
+  version: v1.x
+  contact:
+    name: pointidentity Foundation Limited
+    url: https://pointidentity.com
+  license:
+    name: Proprietary
+    url: https://github.com/pointidentity/pointidentity-node/blob/main/LICENSE
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - application/json+ld
+  - "*/*"
+produces:
+  - application/json
+  - application/json+ld
+  - "*/*"
+externalDocs:
+  description: Pointidentity Network Documentation
+  url: https://docs.pointidentity.com/node
+
+
+apis:
+  - url: ./app/client/docs/pointidentity/did/v1/query.swagger.json
+    tags:
+      rename:
+        pointidentity.did.v1.Query: DID module queries
+
+  - url: ./app/client/docs/pointidentity/resource/v1/query.swagger.json
+    tags:
+      rename:
+        pointidentity.resource.v1.Query: Resource module queries

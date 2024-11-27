@@ -1,0 +1,13 @@
+1
+/home/runner/.local/pointidentity
+2
+yes
+test-install
+rpc.pointidentity.network
+27657
+27656
+nodeid1@1.1.1.1:26646,nodeid2@8.8.8.8:26646
+100upoint
+debug
+plain
+no

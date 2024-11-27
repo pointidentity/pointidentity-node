@@ -1,0 +1,19 @@
+{
+    "payload": {
+        "id": "did:pointid:testnet:3mfFCU1qMJE6WrWeJp3xhF",
+        "controller": [
+            "did:pointid:testnet:3mfFCU1qMJE6WrWeJp3xhF"
+        ],
+        "verificationMethod": [
+            {
+                "id": "did:pointid:testnet:3mfFCU1qMJE6WrWeJp3xhF#key-1",
+                "verificationMethodType": "JsonWebKey2020",
+                "controller": "did:pointid:testnet:3mfFCU1qMJE6WrWeJp3xhF",
+                "verificationMaterial": "{\"crv\":\"Ed25519\",\"kty\":\"OKP\",\"x\":\"jlSzKzZ0loKqd3qrYYyo75GwMXpfA5rwEYEB8sad-hI\"}"
+            }
+        ],
+        "authentication": [
+            "did:pointid:testnet:3mfFCU1qMJE6WrWeJp3xhF#key-1"
+        ]
+    }
+}

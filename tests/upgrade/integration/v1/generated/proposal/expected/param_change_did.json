@@ -1,0 +1,15 @@
+{
+    "create_did": {
+        "denom": "upoint",
+        "amount": "100000000000"
+    },
+    "update_did": {
+        "denom": "upoint",
+        "amount": "50000000000"
+    },
+    "deactivate_did": {
+        "denom": "upoint",
+        "amount": "20000000000"
+    },
+    "burn_factor": "0.990000000000000000"
+}

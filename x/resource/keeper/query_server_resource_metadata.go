@@ -1,0 +1,39 @@
+package keeper
+
+import (
+	"context"
+
+	didtypes "github.com/pointidentity/pointidentity-node/x/did/types"
+	didutils "github.com/pointidentity/pointidentity-node/x/did/utils"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
+	"github.com/pointidentity/pointidentity-node/x/resource/types"
+)
+
+func (q queryServer) ResourceMetadata(c context.Context, req *types.QueryResourceMetadataRequest) (*types.QueryResourceMetadataResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+
+	req.Normalize()
+
+	ctx := sdk.UnwrapSDKContext(c)
+
+	// Validate corresponding DIDDoc exists
+	namespace := q.didKeeper.GetDidNamespace(&ctx)
+	did := didutils.JoinDID(didtypes.DidMethod, namespace, req.CollectionId)
+	if !q.didKeeper.HasDidDoc(&ctx, did) {
+		return nil, didtypes.ErrDidDocNotFound.Wrap(did)
+	}
+
+	metadata, err := q.GetResourceMetadata(&ctx, req.CollectionId, req.Id)
+	if err != nil {
+		return nil, err
+	}
+
+	return &types.QueryResourceMetadataResponse{
+		Resource: &metadata,
+	}, nil
+}
